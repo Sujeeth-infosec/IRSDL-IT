@@ -54,6 +54,10 @@ export default function Home() {
                 We deliver cutting-edge solutions in Cyber Security, AI/ML, Cloud Engineering, and Digital Transformation to accelerate your growth.
               </p>
               
+              <blockquote className="text-sm italic text-muted-foreground border-l-2 border-primary pl-4">
+                "To improve is to change, To be perfect is to have changed often"
+              </blockquote>
+              
               <div className="flex flex-col sm:flex-row gap-4">
                 <InteractiveHoverButton 
                   text="Get Started" 

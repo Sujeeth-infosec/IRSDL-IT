@@ -1,51 +1,109 @@
 import { Link } from "react-router-dom";
-import { Shield, Code, Cloud, Lock, AlertCircle, Zap, BookOpen, ChevronRight } from "lucide-react";
+import { Building2, GraduationCap, Trophy, ShoppingBag, Banknote, Home, Dumbbell, ChevronRight } from "lucide-react";
 
-const vaptServices = [
-  { name: "VAPT", subtitle: "Vulnerability Assessment & Penetration Testing", icon: Shield },
-  { name: "Code Review", subtitle: "Security-focused code analysis", icon: Code },
-  { name: "Cloud Security", subtitle: "Secure your cloud infrastructure", icon: Cloud },
-  { name: "DevSecOps", subtitle: "Security integrated into DevOps", icon: Lock },
-  { name: "Compliance Audits", subtitle: "Meet regulatory requirements", icon: AlertCircle },
-  { name: "Threat Modelling", subtitle: "Identify potential threats", icon: AlertCircle },
-  { name: "Incident Response", subtitle: "Rapid response to security incidents", icon: Zap },
-  { name: "Security Training", subtitle: "Educate your team on security", icon: BookOpen },
-];
+const industriesData = {
+  "Industries We Serve": [
+    { name: "Healthcare", icon: Building2, description: "Medical technology solutions" },
+    { name: "Education", icon: GraduationCap, description: "Educational platform development" },
+    { name: "Sports", icon: Trophy, description: "Sports analytics and platforms" },
+    { name: "Retail", icon: ShoppingBag, description: "E-commerce and retail solutions" },
+    { name: "Finance", icon: Banknote, description: "Financial technology services" },
+    { name: "Real Estate", icon: Home, description: "Property management systems" },
+    { name: "Fitness", icon: Dumbbell, description: "Health and fitness applications" },
+  ],
+  "Business Focus": [
+    { name: "Startup Solutions", description: "Agile development for startups" },
+    { name: "Enterprise Solutions", description: "Large-scale business systems" },
+    { name: "Product Discovery", description: "Market research and validation" },
+    { name: "Product Prototyping", description: "Rapid prototype development" },
+    { name: "Product Development", description: "Full product lifecycle" },
+    { name: "MVP Development", description: "Minimum viable products" },
+    { name: "Dedicated Team", description: "Extended development teams" },
+  ],
+  "Growth-driven Solutions": [
+    { name: "CRM Development", description: "Customer relationship management" },
+    { name: "Web Portal Development", description: "Custom web portals" },
+    { name: "CMS Development", description: "Content management systems" },
+    { name: "ERP Development", description: "Enterprise resource planning" },
+    { name: "On-demand Solutions", description: "Real-time service platforms" },
+  ]
+};
 
 export function IndustriesMegaMenu() {
   return (
-    <div className="absolute top-full left-1/2 -translate-x-1/2 w-[900px] bg-card border border-border rounded-xl shadow-xl mt-2 animate-fade-in overflow-hidden">
+    <div className="absolute top-full left-1/2 -translate-x-1/2 w-[1200px] bg-card border border-border rounded-xl shadow-xl mt-2 animate-fade-in overflow-hidden">
       <div className="p-6">
-        <h3 className="font-display font-semibold text-foreground mb-6">Cyber Security Services</h3>
-        <div className="grid grid-cols-2 gap-4">
-          {vaptServices.map((service) => {
-            const ServiceIcon = service.icon;
-            return (
-              <Link
-                key={service.name}
-                to="/cyber-security"
-                className="group p-4 rounded-lg hover:bg-primary/10 border border-border hover:border-primary transition-all flex items-start gap-3"
-              >
-                <ServiceIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-medium text-sm text-foreground group-hover:text-primary transition-colors">
-                    {service.name}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">{service.subtitle}</p>
+        <div className="grid grid-cols-4 gap-8">
+          {Object.entries(industriesData).map(([category, items]) => (
+            <div key={category}>
+              <h3 className="font-display font-semibold text-foreground mb-4">{category}</h3>
+              <div className="space-y-2">
+                {items.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={`/industries#${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="group block p-2 rounded-lg hover:bg-secondary transition-all"
+                  >
+                    <div className="flex items-start gap-2">
+                      {item.icon && <item.icon className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />}
+                      <div>
+                        <p className="font-medium text-sm text-foreground group-hover:text-primary transition-colors">
+                          {item.name}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{item.description}</p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+          
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="font-semibold text-foreground">Our Partnerships</h4>
+              <ChevronRight className="w-4 h-4 text-muted-foreground" />
+            </div>
+            
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg">
+                <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">G</span>
                 </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">Google Cloud</p>
+                  <p className="text-xs text-muted-foreground">Partner</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-2 bg-orange-50 px-3 py-2 rounded-lg">
+                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">AWS</span>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">partner</p>
+                  <p className="text-xs text-muted-foreground">network</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-2 bg-red-50 px-3 py-2 rounded-lg">
+                <div className="w-8 h-8 bg-red-500 rounded flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">D</span>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">databricks</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-6">
+              <Link
+                to="/contact"
+                className="block w-full bg-primary text-primary-foreground px-4 py-3 rounded-full font-medium text-center hover:bg-primary/90 transition-colors"
+              >
+                Consult Our Experts
               </Link>
-            );
-          })}
-        </div>
-
-        <div className="mt-6 pt-4 border-t border-border">
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
-            Our Partnerships
-          </p>
-          <div className="flex items-center gap-4">
-            <span className="text-xs font-medium text-muted-foreground">Google Cloud Partner</span>
-            <span className="text-xs font-medium text-muted-foreground">AWS Partner Network</span>
-            <span className="text-xs font-medium text-muted-foreground">Databricks</span>
+            </div>
           </div>
         </div>
       </div>
