@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Play, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { EncryptedText } from "@/components/ui/encrypted-text";
+import { ContactForm } from "@/components/ContactForm";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
@@ -46,8 +48,20 @@ export default function Home() {
               {/* Trusted badge removed */}
               
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                Transform Your Business with{" "}
-                <span className="text-gradient">Innovative Technology</span>
+                <EncryptedText
+                  text="Transform Your Business with "
+                  encryptedClassName="text-neutral-500"
+                  revealedClassName="text-foreground"
+                  revealDelayMs={30}
+                />
+                <span className="text-gradient">
+                  <EncryptedText
+                    text="Innovative Technology"
+                    encryptedClassName="text-neutral-500"
+                    revealedClassName="text-gradient"
+                    revealDelayMs={30}
+                  />
+                </span>
               </h1>
               
               <p className="text-lg text-muted-foreground max-w-lg">
@@ -232,9 +246,11 @@ export default function Home() {
             Let's discuss how we can help you achieve your technology goals. Get in touch with our experts today.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button asChild size="lg" variant="secondary" onClick={() => handleCTAClick('Contact Us')}>
-              <Link to="/contact">Contact Us</Link>
-            </Button>
+            <ContactForm>
+              <Button size="lg" variant="secondary" onClick={() => handleCTAClick('Contact Us')}>
+                Contact Us
+              </Button>
+            </ContactForm>
             <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => handleCTAClick('View Our Work')}>
               <Link to="/case-studies">View Our Work</Link>
             </Button>

@@ -4,6 +4,7 @@ import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MegaMenu } from "./MegaMenu";
 import { IndustriesMegaMenu } from "./IndustriesMegaMenu";
+import { ContactForm } from "./ContactForm";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { MobileNav } from "./MobileNav";
 import { LocationSelector } from "./LocationSelector";
@@ -93,14 +94,12 @@ export function Header() {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <LocationSelector />
-            <Button variant="ghost" size="sm" className="gap-2">
-              <Phone className="w-4 h-4" />
-              Book A Call
-            </Button>
-            <Button size="sm" className="gap-2">
-              <Mail className="w-4 h-4" />
-              Contact Us
-            </Button>
+            <ContactForm>
+              <Button size="sm" className="gap-2">
+                <Mail className="w-4 h-4" />
+                Contact Us
+              </Button>
+            </ContactForm>
           </div>
 
           {/* Mobile Menu */}
