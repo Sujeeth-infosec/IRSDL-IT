@@ -26,15 +26,16 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-xl">N</span>
-              </div>
-              <span className="font-display font-bold text-xl">NexaTech</span>
+              <img 
+                src="/IRSDL LOGO white-01.png" 
+                alt="IRSDL Logo" 
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="text-sm text-background/70">
               Transforming businesses through innovative technology solutions. Your trusted partner for digital excellence.
@@ -87,8 +88,9 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5" />
                 <span className="text-sm text-background/70">
-                  123 Tech Park, Innovation Street<br />
-                  San Francisco, CA 94107
+                  23-7-169, 3rd Floor, Santhi Nagar,<br />
+                  MR Palli Circle, Tirupati,<br />
+                  Andhra Pradesh 517502
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -108,9 +110,9 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-8 pt-4 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-background/50">
-            © {new Date().getFullYear()} NexaTech. All rights reserved.
+            © 2025 IRSDL. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {footerLinks.legal.map((link) => (

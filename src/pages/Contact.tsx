@@ -9,8 +9,13 @@ import { useToast } from "@/hooks/use-toast";
 const contactInfo = [
   { icon: Mail, label: "Email", value: "hello@nexatech.com", href: "mailto:hello@nexatech.com" },
   { icon: Phone, label: "Phone", value: "+1 (234) 567-890", href: "tel:+1234567890" },
-  { icon: MapPin, label: "Address", value: "123 Tech Park, San Francisco, CA 94107" },
   { icon: Clock, label: "Hours", value: "Mon - Fri: 9:00 AM - 6:00 PM" },
+];
+
+const offices = [
+  { title: "Head Office - Tirupati", address: "23-7-169, 3rd Floor, Santhi Nagar, MR Palli Circle, Tirupati, Andhra Pradesh 517502" },
+  { title: "Branch Office - Hyderabad", address: "PLOT NO - 39/C, H. NO - 301, SR TOWERS, HMT HILLS, ADDAGUTTA, TIRUMALAGIRI, KUKATPALLY, Medchal - Malkajgiri, Hyderabad, Telangana - 500072, India" },
+  { title: "Branch Office - Bangalore", address: "57 Novel Business Park, Gajendra Nager, Hosur Road, Anepalya, Bangalore - 560030" },
 ];
 
 export default function Contact() {
@@ -99,6 +104,24 @@ export default function Contact() {
                       </div>
                     );
                   })}
+                </div>
+              </div>
+
+              {/* Office Locations */}
+              <div>
+                <h3 className="font-display text-2xl font-bold text-foreground mb-6">Office Locations</h3>
+                <div className="space-y-4">
+                  {offices.map((office) => (
+                    <div key={office.title} className="flex items-start gap-4 p-4 rounded-xl bg-secondary/50">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <MapPin className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-foreground">{office.title}</p>
+                        <p className="text-sm text-muted-foreground mt-1">{office.address}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 

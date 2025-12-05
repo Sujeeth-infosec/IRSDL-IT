@@ -20,7 +20,6 @@ const timeline = [
   { year: "2015", title: "Global Expansion", description: "Opened offices in 5 countries" },
   { year: "2018", title: "AI Division", description: "Launched dedicated AI/ML practice" },
   { year: "2020", title: "Cloud Excellence", description: "Achieved AWS Premier Partner status" },
-  { year: "2023", title: "200+ Projects", description: "Milestone of successful deliveries" },
 ];
 
 export default function About() {

@@ -3,19 +3,24 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MegaMenu } from "./MegaMenu";
+import { IndustriesMegaMenu } from "./IndustriesMegaMenu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { MobileNav } from "./MobileNav";
+import { LocationSelector } from "./LocationSelector";
 
 const navItems = [
-  { name: "Services", href: "/services", hasMegaMenu: true },
-  { name: "Industries", href: "/industries" },
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services", hasMegaMenu: true, megaMenuType: "services" },
+  { name: "Industries", href: "/industries", hasMegaMenu: true, megaMenuType: "industries" },
   { name: "Work", href: "/case-studies" },
   { name: "About", href: "/about" },
 ];
 
 export function Header() {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
   return (
@@ -24,10 +29,11 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-xl">N</span>
-            </div>
-            <span className="font-display font-bold text-xl text-foreground">NexaTech</span>
+            <img 
+              src="/IRSDL LOGO-01.png" 
+              alt="IRSDL Logo" 
+              className="h-16 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -36,8 +42,22 @@ export function Header() {
               <div
                 key={item.name}
                 className="relative"
-                onMouseEnter={() => item.hasMegaMenu && setIsMegaMenuOpen(true)}
-                onMouseLeave={() => item.hasMegaMenu && setIsMegaMenuOpen(false)}
+                onMouseEnter={() => {
+                  if (item.hasMegaMenu) {
+                    if (hoverTimeout) clearTimeout(hoverTimeout);
+                    setIsMegaMenuOpen(true);
+                    setActiveMegaMenu(item.megaMenuType || null);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (item.hasMegaMenu) {
+                    const timeout = setTimeout(() => {
+                      setIsMegaMenuOpen(false);
+                      setActiveMegaMenu(null);
+                    }, 150);
+                    setHoverTimeout(timeout);
+                  }
+                }}
               >
                 <Link
                   to={item.href}
@@ -49,13 +69,30 @@ export function Header() {
                 >
                   {item.name}
                 </Link>
-                {item.hasMegaMenu && isMegaMenuOpen && <MegaMenu />}
+                {item.hasMegaMenu && isMegaMenuOpen && activeMegaMenu === item.megaMenuType && (
+                  <div 
+                    onMouseEnter={() => {
+                      if (hoverTimeout) clearTimeout(hoverTimeout);
+                    }} 
+                    onMouseLeave={() => {
+                      const timeout = setTimeout(() => {
+                        setIsMegaMenuOpen(false);
+                        setActiveMegaMenu(null);
+                      }, 150);
+                      setHoverTimeout(timeout);
+                    }}
+                  >
+                    {activeMegaMenu === 'services' && <MegaMenu />}
+                    {activeMegaMenu === 'industries' && <IndustriesMegaMenu />}
+                  </div>
+                )}
               </div>
             ))}
           </nav>
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
+            <LocationSelector />
             <Button variant="ghost" size="sm" className="gap-2">
               <Phone className="w-4 h-4" />
               Book A Call

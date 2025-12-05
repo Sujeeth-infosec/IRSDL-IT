@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Play, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
+import { SEOHead } from "@/components/SEOHead";
+import { SocialShare } from "@/components/SocialShare";
 import { servicesData, testimonials, caseStudies, technologies } from "@/data/servicesData";
+import { trackEvent } from "@/components/Analytics";
 
-const stats = [
-  { value: "200+", label: "Projects Delivered" },
-  { value: "50+", label: "Happy Clients" },
-  { value: "98%", label: "Client Retention" },
-  { value: "15+", label: "Years Experience" },
-];
+// Removed site statistics (project/client/retention numbers) per request
 
 const whyChooseUs = [
   "Expert team with deep technical knowledge",
@@ -24,8 +23,17 @@ const whyChooseUs = [
 ];
 
 export default function Home() {
+  const handleCTAClick = (action: string) => {
+    trackEvent('click', 'CTA', action);
+  };
+
   return (
     <main className="pt-16 lg:pt-20">
+      <SEOHead 
+        title="IRSDL IT - Professional IT Services & Digital Solutions"
+        description="Leading IT services company providing cybersecurity, AI/ML, cloud engineering, and digital transformation solutions for businesses worldwide."
+        keywords="IT services, cybersecurity, AI ML, cloud engineering, digital transformation, web development"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
@@ -35,10 +43,7 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                Trusted by 50+ Companies Worldwide
-              </div>
+              {/* Trusted badge removed */}
               
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                 Transform Your Business with{" "}
@@ -50,22 +55,22 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="gap-2">
-                  Get Started <ArrowRight className="w-4 h-4" />
-                </Button>
-                <Button size="lg" variant="outline" className="gap-2">
-                  <Play className="w-4 h-4" /> Watch Demo
-                </Button>
+                <InteractiveHoverButton 
+                  text="Get Started" 
+                  className="w-40 h-12" 
+                  onClick={() => handleCTAClick('Get Started')}
+                />
               </div>
               
-              <div className="flex items-center gap-8 pt-4">
-                {stats.slice(0, 3).map((stat) => (
-                  <div key={stat.label}>
-                    <p className="font-display text-2xl font-bold text-primary">{stat.value}</p>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  </div>
-                ))}
+              <div className="pt-4">
+                <SocialShare 
+                  title="IRSDL IT - Professional IT Services"
+                  description="Transform your business with innovative technology solutions"
+                  className="justify-start"
+                />
               </div>
+              
+              {/* Hero stats removed */}
             </div>
             
             <div className="relative hidden lg:block">
@@ -142,19 +147,7 @@ export default function Home() {
               </Button>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className={`p-6 rounded-2xl bg-card border border-border ${
-                    index === 0 ? "col-span-2" : ""
-                  }`}
-                >
-                  <p className="font-display text-4xl font-bold text-primary">{stat.value}</p>
-                  <p className="text-muted-foreground mt-1">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+            {/* Stats cards removed */}
           </div>
         </div>
       </section>
@@ -235,10 +228,10 @@ export default function Home() {
             Let's discuss how we can help you achieve your technology goals. Get in touch with our experts today.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button asChild size="lg" variant="secondary">
+            <Button asChild size="lg" variant="secondary" onClick={() => handleCTAClick('Contact Us')}>
               <Link to="/contact">Contact Us</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => handleCTAClick('View Our Work')}>
               <Link to="/case-studies">View Our Work</Link>
             </Button>
           </div>
