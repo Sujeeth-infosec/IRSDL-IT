@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle, Play, ChevronRight } from "lucide-react";
+import { ArrowRight, CheckCircle, Play, ChevronRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { EncryptedText } from "@/components/ui/encrypted-text";
+import { WavyBackground } from "@/components/ui/wavy-background";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
+import { ServicesTabbed } from "@/components/ServicesTabbed";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { SEOHead } from "@/components/SEOHead";
 import { SocialShare } from "@/components/SocialShare";
 import { servicesData, testimonials, caseStudies, technologies } from "@/data/servicesData";
 import { trackEvent } from "@/components/Analytics";
+import { TechOrbitDisplay } from "@/components/ui/tech-orbit-display";
+
 
 // Removed site statistics (project/client/retention numbers) per request
 
@@ -22,6 +26,159 @@ const whyChooseUs = [
   "Transparent communication",
   "Scalable and secure solutions",
   "Industry-leading best practices",
+];
+
+const techIcons = [
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" 
+        alt="React" 
+        className="w-8 h-8"
+      />
+    ),
+    className: 'size-[40px] border-none bg-transparent',
+    duration: 20,
+    delay: 0,
+    radius: 80,
+    path: true,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" 
+        alt="Node.js" 
+        className="w-8 h-8"
+      />
+    ),
+    className: 'size-[40px] border-none bg-transparent',
+    duration: 20,
+    delay: 10,
+    radius: 80,
+    path: true,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" 
+        alt="Python" 
+        className="w-10 h-10"
+      />
+    ),
+    className: 'size-[50px] border-none bg-transparent',
+    radius: 140,
+    duration: 25,
+    delay: 0,
+    path: true,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" 
+        alt="AWS" 
+        className="w-10 h-10"
+      />
+    ),
+    className: 'size-[50px] border-none bg-transparent',
+    radius: 140,
+    duration: 25,
+    delay: 12,
+    path: true,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" 
+        alt="Docker" 
+        className="w-8 h-8"
+      />
+    ),
+    className: 'size-[40px] border-none bg-transparent',
+    duration: 30,
+    delay: 5,
+    radius: 200,
+    path: true,
+    reverse: true,
+  },
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" 
+        alt="Kubernetes" 
+        className="w-8 h-8"
+      />
+    ),
+    className: 'size-[40px] border-none bg-transparent',
+    duration: 30,
+    delay: 15,
+    radius: 200,
+    path: true,
+    reverse: true,
+  },
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" 
+        alt="JavaScript" 
+        className="w-8 h-8"
+      />
+    ),
+    className: 'size-[40px] border-none bg-transparent',
+    duration: 35,
+    delay: 8,
+    radius: 260,
+    path: true,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" 
+        alt="Java" 
+        className="w-8 h-8"
+      />
+    ),
+    className: 'size-[40px] border-none bg-transparent',
+    duration: 35,
+    delay: 20,
+    radius: 260,
+    path: true,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" 
+        alt="Next.js" 
+        className="w-8 h-8"
+      />
+    ),
+    className: 'size-[40px] border-none bg-transparent',
+    duration: 40,
+    delay: 10,
+    radius: 320,
+    path: true,
+    reverse: true,
+  },
+  {
+    component: () => (
+      <img 
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" 
+        alt="PostgreSQL" 
+        className="w-8 h-8"
+      />
+    ),
+    className: 'size-[40px] border-none bg-transparent',
+    duration: 40,
+    delay: 25,
+    radius: 320,
+    path: true,
+    reverse: true,
+  },
 ];
 
 export default function Home() {
@@ -37,47 +194,49 @@ export default function Home() {
         keywords="IT services, cybersecurity, AI ML, cloud engineering, digital transformation, web development"
       />
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-        
+      <WavyBackground 
+        className="max-w-6xl mx-auto"
+        containerClassName="min-h-[90vh]"
+        colors={["#38bdf8", "#818cf8", "#c084fc", "#e879f9", "#22d3ee"]}
+        waveWidth={50}
+        backgroundFill="#ffffff"
+        blur={10}
+        speed="slow"
+        waveOpacity={0.3}
+      >
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              {/* Trusted badge removed */}
-              
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <EncryptedText
                   text="Transform Your Business with "
                   encryptedClassName="text-neutral-500"
-                  revealedClassName="text-foreground"
+                  revealedClassName="text-[rgb(38,18,111)]"
                   revealDelayMs={30}
                 />
-                <span className="text-gradient">
+                <span>
                   <EncryptedText
                     text="Innovative Technology"
                     encryptedClassName="text-neutral-500"
-                    revealedClassName="text-gradient"
+                    revealedClassName="text-[rgb(107,87,249)]"
                     revealDelayMs={30}
                   />
                 </span>
               </h1>
               
-              <p className="text-lg text-muted-foreground max-w-lg">
-                We deliver cutting-edge solutions in Cyber Security, AI/ML, Cloud Engineering, and Digital Transformation to accelerate your growth.
-              </p>
+
               
               <blockquote className="text-sm italic text-muted-foreground border-l-2 border-primary pl-4">
                 "To improve is to change, To be perfect is to have changed often"
               </blockquote>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <InteractiveHoverButton 
-                  text="Get Started" 
-                  className="w-40 h-12" 
+                <LiquidButton 
+                  size="xl"
                   onClick={() => handleCTAClick('Get Started')}
-                />
+                >
+                  Get Started
+                </LiquidButton>
               </div>
               
               <div className="pt-4">
@@ -87,8 +246,6 @@ export default function Home() {
                   className="justify-start"
                 />
               </div>
-              
-              {/* Hero stats removed */}
             </div>
             
             <div className="relative hidden lg:block">
@@ -106,7 +263,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </WavyBackground>
 
       {/* Services Preview */}
       <section className="py-24 bg-secondary/30">
@@ -117,17 +274,7 @@ export default function Home() {
             description="From cybersecurity to AI, we offer end-to-end services to drive your digital transformation"
           />
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {Object.entries(servicesData).slice(0, 8).map(([key, data]) => (
-              <ServiceCard
-                key={key}
-                title={data.title}
-                description={data.description}
-                icon={data.icon}
-                href={`/services#${key}`}
-              />
-            ))}
-          </div>
+          <ServicesTabbed />
           
           <div className="text-center mt-12">
             <Button asChild variant="outline" size="lg">
@@ -139,8 +286,10 @@ export default function Home() {
         </div>
       </section>
 
+
+
       {/* Why Choose Us */}
-      <section className="py-24">
+      <section className="py-24 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -179,64 +328,14 @@ export default function Home() {
             description="We leverage the latest technologies to build robust, scalable solutions"
           />
           
-          <div className="flex flex-wrap justify-center gap-4">
-            {technologies.map((tech) => (
-              <div
-                key={tech.name}
-                className="px-6 py-3 rounded-full bg-card border border-border hover:border-primary/30 hover:shadow-md transition-all cursor-default"
-              >
-                <span className="font-medium text-foreground">{tech.name}</span>
-                <span className="text-xs text-muted-foreground ml-2">({tech.category})</span>
-              </div>
-            ))}
-          </div>
+          <TechOrbitDisplay iconsArray={techIcons} />
         </div>
       </section>
 
-      {/* Case Studies */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <SectionHeading
-            badge="Our Work"
-            title="Case Studies"
-            description="Explore how we've helped businesses achieve their goals"
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {caseStudies.slice(0, 3).map((study) => (
-              <CaseStudyCard key={study.title} {...study} />
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <Button asChild variant="outline" size="lg">
-              <Link to="/case-studies" className="gap-2">
-                View All Case Studies <ChevronRight className="w-4 h-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-secondary/30">
-        <div className="container mx-auto px-4">
-          <SectionHeading
-            badge="Testimonials"
-            title="What Our Clients Say"
-            description="Don't just take our word for it"
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.name} {...testimonial} />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-primary relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden" style={{backgroundColor: '#5B5BD6'}}>
         <div className="absolute inset-0 bg-[url('/placeholder.svg')] opacity-5" />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">

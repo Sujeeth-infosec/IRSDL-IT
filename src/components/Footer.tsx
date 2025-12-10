@@ -12,8 +12,6 @@ const footerLinks = {
   company: [
     { name: "About Us", href: "/about" },
     { name: "Case Studies", href: "/case-studies" },
-    { name: "Careers", href: "/careers" },
-    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ],
   legal: [
@@ -25,8 +23,8 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-4 py-8">
+    <footer className="text-white" style={{backgroundColor: 'rgb(38,18,111)'}}>
+      <div className="container mx-auto px-4 py-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Brand */}
           <div className="space-y-6">
@@ -87,22 +85,29 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5" />
-                <span className="text-sm text-background/70">
-                  23-7-169, 3rd Floor, Santhi Nagar,<br />
-                  MR Palli Circle, Tirupati,<br />
-                  Andhra Pradesh 517502
-                </span>
+                <div className="text-sm text-background/70">
+                  <div className="mb-3">
+                    <strong>Tirupati Branch</strong><br />
+                    23-7-169, 3rd Floor, Santhi Nagar,<br />
+                    MR Palli Circle, Tirupati, AP - 517502
+                  </div>
+                  <div className="mb-3">
+                    <strong>Bangalore Branch</strong><br />
+                    57 Novel Business Park, Gajendra Nager,<br />
+                    Hosur Road, Anepalya, Bangalore - 560030
+                  </div>
+                  <div>
+                    <strong>Hyderabad Branch</strong><br />
+                    Flat No.24, Dollar Hills, Pragathi Nagar,<br />
+                    Nizampet, Medchal-Malkajgiri District, Telangana - 500090
+                  </div>
+                </div>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary" />
-                <a href="tel:+1234567890" className="text-sm text-background/70 hover:text-primary transition-colors">
-                  +1 (234) 567-890
-                </a>
-              </li>
+
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary" />
-                <a href="mailto:hello@nexatech.com" className="text-sm text-background/70 hover:text-primary transition-colors">
-                  hello@nexatech.com
+                <a href="mailto:contact@irsdl.com" className="text-sm text-background/70 hover:text-primary transition-colors">
+                  contact@irsdl.com
                 </a>
               </li>
             </ul>

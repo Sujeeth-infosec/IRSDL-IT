@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Shield, Code, Cloud, Lock, AlertCircle, Zap, BookOpen, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
+import ExpandableServiceCards from "@/components/ui/expandable-service-cards";
 
 const services = [
   {
@@ -226,74 +227,21 @@ export default function CyberSecurity() {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services Grid with Expandable Cards */}
       <section className="py-24">
         <div className="container mx-auto px-4">
           <SectionHeading
             badge="Our Services"
             title="Complete Cyber Security Solutions"
-            description="Comprehensive security services covering every aspect of your organization's protection"
+            description="Click on any service to explore detailed information"
           />
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={service.id}
-                  id={service.id}
-                  className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all"
-                >
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                      <Icon className="w-7 h-7 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-2xl font-bold text-foreground">{service.title}</h3>
-                      <p className="text-sm text-primary font-medium mt-1">{service.subtitle}</p>
-                    </div>
-                  </div>
-
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
-
-                  <div className="space-y-4 mb-6">
-                    <div>
-                      <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider mb-3 text-muted-foreground">
-                        What We Provide
-                      </h4>
-                      <ul className="space-y-2">
-                        {service.features.slice(0, 3).map((feature) => (
-                          <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider mb-3 text-muted-foreground">
-                      Key Benefits
-                    </h4>
-                    <ul className="space-y-2">
-                      {service.benefits.slice(0, 2).map((benefit) => (
-                        <li key={benefit} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <ExpandableServiceCards services={services} />
         </div>
       </section>
 
       {/* Detailed Service Sections */}
-      <section className="py-24 bg-secondary/30">
+      <section className="py-24">
         <div className="container mx-auto px-4">
           <SectionHeading
             badge="Deep Dive"

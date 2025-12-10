@@ -7,15 +7,14 @@ import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "hello@nexatech.com", href: "mailto:hello@nexatech.com" },
-  { icon: Phone, label: "Phone", value: "+1 (234) 567-890", href: "tel:+1234567890" },
+  { icon: Mail, label: "Email", value: "contact@irsdl.com", href: "mailto:contact@irsdl.com" },
   { icon: Clock, label: "Hours", value: "Mon - Fri: 9:00 AM - 6:00 PM" },
 ];
 
 const offices = [
-  { title: "Head Office - Tirupati", address: "23-7-169, 3rd Floor, Santhi Nagar, MR Palli Circle, Tirupati, Andhra Pradesh 517502" },
-  { title: "Branch Office - Hyderabad", address: "PLOT NO - 39/C, H. NO - 301, SR TOWERS, HMT HILLS, ADDAGUTTA, TIRUMALAGIRI, KUKATPALLY, Medchal - Malkajgiri, Hyderabad, Telangana - 500072, India" },
-  { title: "Branch Office - Bangalore", address: "57 Novel Business Park, Gajendra Nager, Hosur Road, Anepalya, Bangalore - 560030" },
+  { title: "Tirupati Branch", address: "23-7-169, 3rd Floor, Santhi Nagar, MR Palli Circle, Tirupati, AP - 517502" },
+  { title: "Bangalore Branch", address: "57 Novel Business Park, Gajendra Nager, Hosur Road, Anepalya, Bangalore - 560030" },
+  { title: "Hyderabad Branch", address: "Flat No.24, Dollar Hills, Pragathi Nagar, Nizampet, Medchal-Malkajgiri District, Telangana - 500090" },
 ];
 
 export default function Contact() {

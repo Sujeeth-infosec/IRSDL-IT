@@ -2,7 +2,60 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { servicesData } from "@/data/servicesData";
 import { SectionHeading } from "@/components/SectionHeading";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Shield, Database, Brain, Cloud, Code, Smartphone } from "lucide-react";
+import { Compare } from "@/components/ui/compare";
+import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+
+const stickyContent = [
+  {
+    title: "Discovery & Planning",
+    description: "We start by understanding your business needs, challenges, and goals. Our team conducts thorough research and creates a comprehensive project roadmap tailored to your requirements.",
+    content: (
+      <div className="h-full w-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white p-8">
+        <div className="text-center">
+          <Brain className="w-16 h-16 mx-auto mb-4" />
+          <h3 className="text-xl font-bold">Strategic Planning</h3>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Design & Architecture",
+    description: "Our expert architects design scalable, secure, and efficient solutions. We create detailed technical specifications and user experience designs that align with your business objectives.",
+    content: (
+      <div className="h-full w-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white p-8">
+        <div className="text-center">
+          <Code className="w-16 h-16 mx-auto mb-4" />
+          <h3 className="text-xl font-bold">System Architecture</h3>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Development & Implementation",
+    description: "Using agile methodologies, our development teams build robust, high-quality solutions. We ensure continuous integration, testing, and deployment throughout the development lifecycle.",
+    content: (
+      <div className="h-full w-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white p-8">
+        <div className="text-center">
+          <Smartphone className="w-16 h-16 mx-auto mb-4" />
+          <h3 className="text-xl font-bold">Development</h3>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Testing & Deployment",
+    description: "Comprehensive testing ensures your solution meets the highest quality standards. We handle secure deployment and provide ongoing support to ensure optimal performance.",
+    content: (
+      <div className="h-full w-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white p-8">
+        <div className="text-center">
+          <Shield className="w-16 h-16 mx-auto mb-4" />
+          <h3 className="text-xl font-bold">Quality Assurance</h3>
+        </div>
+      </div>
+    ),
+  },
+];
 
 export default function Services() {
   const location = useLocation();
@@ -38,7 +91,7 @@ export default function Services() {
           <section
             key={key}
             id={key}
-            className={`py-24 ${isEven ? "bg-background" : "bg-secondary/30"}`}
+            className={`py-24 ${!isEven ? "bg-background" : "bg-secondary/30"}`}
           >
             <div className="container mx-auto px-4">
               <div className={`grid lg:grid-cols-2 gap-16 items-center ${!isEven ? "lg:flex-row-reverse" : ""}`}>
@@ -71,12 +124,15 @@ export default function Services() {
                   </div>
                 </div>
 
-                <div className={`${!isEven ? "lg:order-1" : ""}`}>
-                  <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 to-primary/5 p-8">
-                    <div className="w-full h-full rounded-2xl bg-card border border-border shadow-lg flex items-center justify-center">
-                      <Icon className="w-24 h-24 text-primary/30" />
-                    </div>
-                  </div>
+                <div className={`${!isEven ? "lg:order-1" : ""} flex justify-center`}>
+                  <Compare
+                    firstImage="https://assets.aceternity.com/code-problem.png"
+                    secondImage="https://assets.aceternity.com/code-solution.png"
+                    firstImageClassName="object-cover object-left-top"
+                    secondImageClassname="object-cover object-left-top"
+                    className="h-[400px] w-[400px] md:h-[500px] md:w-[500px]"
+                    slideMode="hover"
+                  />
                 </div>
               </div>
             </div>
