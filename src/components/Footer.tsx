@@ -17,7 +17,6 @@ const footerLinks = {
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookies" },
   ],
 };
 
@@ -115,17 +114,10 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-8 pt-4 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-8 pt-4 border-t border-background/10 flex flex-col md:flex-row items-center justify-center gap-4">
           <p className="text-sm text-background/50">
             © 2025 IRSDL. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            {footerLinks.legal.map((link) => (
-              <Link key={link.name} to={link.href} className="text-sm text-background/50 hover:text-primary transition-colors">
-                {link.name}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

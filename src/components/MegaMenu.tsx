@@ -69,23 +69,6 @@ export function MegaMenu() {
               </Link>
             ))}
           </div>
-
-          {/* Partners Section */}
-          <div className="mt-6 pt-4 border-t border-border">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
-              Our Partners
-            </p>
-            <div className="flex items-center gap-4">
-              {["Google Cloud", "AWS", "Azure", "Databricks"].map((partner) => (
-                <div
-                  key={partner}
-                  className="px-4 py-2 bg-secondary rounded-lg text-xs font-medium text-muted-foreground"
-                >
-                  {partner}
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>

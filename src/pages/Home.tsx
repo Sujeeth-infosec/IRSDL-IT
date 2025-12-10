@@ -205,7 +205,7 @@ export default function Home() {
         waveOpacity={0.3}
       >
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-4xl mx-auto text-center">
             <div className="space-y-8">
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <EncryptedText
@@ -224,42 +224,50 @@ export default function Home() {
                 </span>
               </h1>
               
-
-              
-              <blockquote className="text-sm italic text-muted-foreground border-l-2 border-primary pl-4">
+              <blockquote className="text-sm italic text-muted-foreground border-l-2 border-primary pl-4 inline-block">
                 "To improve is to change, To be perfect is to have changed often"
               </blockquote>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <LiquidButton 
-                  size="xl"
-                  onClick={() => handleCTAClick('Get Started')}
-                >
-                  Get Started
-                </LiquidButton>
-              </div>
-              
-              <div className="pt-4">
-                <SocialShare 
-                  title="IRSDL IT - Professional IT Services"
-                  description="Transform your business with innovative technology solutions"
-                  className="justify-start"
-                />
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/contact">
+                  <LiquidButton 
+                    size="xl"
+                    onClick={() => handleCTAClick('Get Started')}
+                  >
+                    Get Started
+                  </LiquidButton>
+                </Link>
               </div>
             </div>
-            
-            <div className="relative hidden lg:block">
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 to-primary/5 p-8 animate-float">
-                <div className="w-full h-full rounded-2xl bg-card border border-border shadow-xl flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                      <span className="text-4xl">🚀</span>
-                    </div>
-                    <p className="font-display font-semibold text-foreground">Innovation Hub</p>
-                    <p className="text-sm text-muted-foreground mt-2">Where ideas become reality</p>
-                  </div>
-                </div>
-              </div>
+          </div>
+          
+          {/* Service Links */}
+          <div className="mt-16">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link to="/services#cyber-security" className="group relative px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Cyber Security</span>
+              </Link>
+              <Link to="/services#data-engineering" className="group relative px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Data Engineering</span>
+              </Link>
+              <Link to="/services#ai-ml" className="group relative px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">AI/ML</span>
+              </Link>
+              <Link to="/services#cloud" className="group relative px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Cloud</span>
+              </Link>
+              <Link to="/services#software" className="group relative px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Software</span>
+              </Link>
+              <Link to="/services#application" className="group relative px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Application</span>
+              </Link>
+              <Link to="/services#digital" className="group relative px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Digital</span>
+              </Link>
+              <Link to="/services#agriculture" className="group relative px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-1">
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Agriculture</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -288,36 +296,7 @@ export default function Home() {
 
 
 
-      {/* Why Choose Us */}
-      <section className="py-24 bg-secondary/30">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <SectionHeading
-                badge="Why Choose Us"
-                title="Your Trusted Technology Partner"
-                description="We combine technical expertise with business acumen to deliver solutions that drive real results"
-                centered={false}
-              />
-              
-              <div className="grid sm:grid-cols-2 gap-4 mt-8">
-                {whyChooseUs.map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">{item}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <Button asChild size="lg" className="mt-8">
-                <Link to="/about">Learn More About Us</Link>
-              </Button>
-            </div>
-            
-            {/* Stats cards removed */}
-          </div>
-        </div>
-      </section>
+
 
       {/* Technologies */}
       <section className="py-24 bg-secondary/30">
@@ -350,9 +329,6 @@ export default function Home() {
                 Contact Us
               </Button>
             </ContactForm>
-            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => handleCTAClick('View Our Work')}>
-              <Link to="/case-studies">View Our Work</Link>
-            </Button>
           </div>
         </div>
       </section>

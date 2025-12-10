@@ -11,6 +11,7 @@ import { Analytics } from "@/components/Analytics";
 import { SEOHead } from "@/components/SEOHead";
 import Home from "@/pages/Home";
 import Services from "@/pages/Services";
+import Industries from "@/pages/Industries";
 import CyberSecurity from "@/pages/CyberSecurity";
 import About from "@/pages/About";
 import CaseStudies from "@/pages/CaseStudies";
@@ -48,6 +49,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/industries" element={<Industries />} />
               <Route path="/cyber-security" element={<CyberSecurity />} />
               <Route path="/data-ai" element={<DataAI />} />
               <Route path="/about" element={<About />} />

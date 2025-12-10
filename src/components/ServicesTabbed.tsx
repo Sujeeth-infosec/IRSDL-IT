@@ -2,6 +2,18 @@ import { useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 const tabsContent = {
+  "cyber-security": {
+    title: "Cyber Security Solutions",
+    description: "Protect your digital assets with comprehensive security solutions covering vulnerability assessment, penetration testing, cloud security, and compliance audits",
+    services: [
+      { name: "VAPT", description: "Comprehensive security testing to identify and exploit vulnerabilities in your systems before attackers do" },
+      { name: "Cloud Security", description: "Protect your cloud resources with comprehensive security assessments and hardening strategies across AWS, Azure, and GCP" },
+      { name: "DevSecOps", description: "Embed security practices throughout your development and deployment pipeline for continuous protection" },
+      { name: "Compliance Audits", description: "Ensure your organization meets industry standards and regulatory requirements with comprehensive compliance audits" },
+      { name: "Threat Modelling", description: "Proactively identify and analyze potential threats to your systems before they become security incidents" },
+      { name: "Security Training", description: "Empower your team with security knowledge and best practices to become your first line of defense" }
+    ]
+  },
   "data-ai": {
     title: "Data Intelligence & Automation",
     description: "Make your business intelligent by leveraging data and AI/ML technologies to get actionable insights and achieve process automation to drive efficiency, productivity, and growth",
@@ -65,6 +77,7 @@ const tabsContent = {
 };
 
 const tabs = [
+  { key: "cyber-security", label: "Cyber Security" },
   { key: "data-ai", label: "Data & AI" },
   { key: "cloud", label: "Cloud" },
   { key: "software", label: "Software" },
@@ -73,7 +86,7 @@ const tabs = [
 ];
 
 export function ServicesTabbed() {
-  const [activeTab, setActiveTab] = useState("data-ai");
+  const [activeTab, setActiveTab] = useState("cyber-security");
   const activeContent = tabsContent[activeTab as keyof typeof tabsContent];
 
   return (
@@ -104,10 +117,10 @@ export function ServicesTabbed() {
         <p className="text-gray-600 max-w-4xl mx-auto">{activeContent.description}</p>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8 items-start">
-        {/* Left Column */}
+      <div className="grid lg:grid-cols-3 gap-8 items-center">
+        {/* Left Column - First 3 items */}
         <div className="space-y-6">
-          {activeContent.services.slice(0, Math.ceil(activeContent.services.length / 3)).map((service, index) => (
+          {activeContent.services.slice(0, 3).map((service, index) => (
             <div key={index} className="group cursor-pointer">
               <div className="flex items-start gap-3 p-4 rounded-xl hover:bg-gray-50 transition-colors">
                 <ArrowUpRight className="w-5 h-5 text-primary mt-1 group-hover:translate-x-1 transition-transform" />
@@ -138,14 +151,14 @@ export function ServicesTabbed() {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center">
                 <span className="text-3xl">🧠</span>
               </div>
-              <h3 className="text-xl font-bold text-white">{activeTab === "data-ai" ? "AI/ML" : activeTab.toUpperCase()}</h3>
+              <h3 className="text-xl font-bold text-white">{activeTab === "cyber-security" ? "SECURITY" : activeTab === "data-ai" ? "AI/ML" : activeTab.toUpperCase()}</h3>
             </div>
           </div>
         </div>
 
-        {/* Right Column */}
+        {/* Right Column - Last 3 items */}
         <div className="space-y-6">
-          {activeContent.services.slice(Math.ceil(activeContent.services.length / 3)).map((service, index) => (
+          {activeContent.services.slice(3, 6).map((service, index) => (
             <div key={index} className="group cursor-pointer">
               <div className="flex items-start gap-3 p-4 rounded-xl hover:bg-gray-50 transition-colors">
                 <ArrowUpRight className="w-5 h-5 text-primary mt-1 group-hover:translate-x-1 transition-transform" />

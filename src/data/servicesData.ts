@@ -1,4 +1,4 @@
-import { Shield, Database, Brain, Cloud, Code, Smartphone, Lightbulb } from "lucide-react";
+import { Shield, Database, Brain, Cloud, Code, Smartphone, Lightbulb, Sprout } from "lucide-react";
 
 export const servicesData = {
   "cyber-security": {
@@ -112,6 +112,21 @@ export const servicesData = {
       { name: "Digital Marketing", description: "Strategic digital marketing solutions" },
       { name: "Process Automation", description: "Automate business processes" },
       { name: "E-commerce Solutions", description: "Online commerce platforms" },
+    ],
+  },
+  agriculture: {
+    title: "Agriculture",
+    icon: Sprout,
+    description: "Smart farming and agritech solutions",
+    services: [
+      { name: "Farm Management Systems", description: "Comprehensive farm operations management" },
+      { name: "Crop Monitoring", description: "Real-time crop health tracking" },
+      { name: "Precision Agriculture", description: "Data-driven farming solutions" },
+      { name: "IoT Sensors", description: "Smart sensors for agriculture" },
+      { name: "Weather Analytics", description: "Weather prediction and analysis" },
+      { name: "Supply Chain Management", description: "Agricultural supply chain solutions" },
+      { name: "Livestock Management", description: "Animal health and tracking systems" },
+      { name: "Yield Prediction", description: "AI-powered yield forecasting" },
     ],
   },
 };
