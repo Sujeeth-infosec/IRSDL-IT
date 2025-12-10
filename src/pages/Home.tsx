@@ -188,6 +188,16 @@ export default function Home() {
 
   return (
     <main className="pt-16 lg:pt-20">
+      {/* Under Construction Banner */}
+      <div className="bg-yellow-500 text-black py-2 px-4 text-center font-semibold text-sm fixed top-16 lg:top-20 left-0 right-0 z-50">
+        🚧 Site Under Construction - Some features may be unavailable 🚧
+      </div>
+      <div className="h-10"></div>
+      {/* Under Construction Banner */}
+      <div className="bg-yellow-500 text-black py-2 px-4 text-center font-semibold text-sm fixed top-16 lg:top-20 left-0 right-0 z-50">
+        🚧 Site Under Construction - Some features may be unavailable 🚧
+      </div>
+      <div className="h-10"></div>
       <SEOHead 
         title="IRSDL IT - Professional IT Services & Digital Solutions"
         description="Leading IT services company providing cybersecurity, AI/ML, cloud engineering, and digital transformation solutions for businesses worldwide."
