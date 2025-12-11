@@ -11,6 +11,7 @@ interface ServiceCard {
   icon: LucideIcon;
   features: string[];
   benefits: string[];
+  image?: string;
 }
 
 interface ExpandableServiceCardsProps {
@@ -63,6 +64,15 @@ export default function ExpandableServiceCards({ services }: ExpandableServiceCa
               className="w-full max-w-3xl max-h-[90vh] flex flex-col bg-card border border-border rounded-3xl overflow-hidden shadow-2xl"
             >
               <div className="overflow-y-auto">
+                {active.image && (
+                  <motion.div layoutId={`image-${active.id}-${id}`}>
+                    <img
+                      src={active.image}
+                      alt={active.title}
+                      className="w-full h-64 object-cover"
+                    />
+                  </motion.div>
+                )}
                 <div className="p-8">
                   <div className="flex items-start justify-between mb-6">
                     <div className="flex items-start gap-4">
@@ -86,7 +96,7 @@ export default function ExpandableServiceCards({ services }: ExpandableServiceCa
                     </div>
                     <button
                       onClick={() => setActive(null)}
-                      className="w-8 h-8 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center transition-colors"
+                      className="w-8 h-8 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center transition-colors flex-shrink-0"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -140,6 +150,15 @@ export default function ExpandableServiceCards({ services }: ExpandableServiceCa
               onClick={() => setActive(service)}
               className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all cursor-pointer"
             >
+              {service.image && (
+                <motion.div layoutId={`image-${service.id}-${id}`} className="mb-6 -mx-8 -mt-8">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-48 object-cover rounded-t-2xl"
+                  />
+                </motion.div>
+              )}
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                   <Icon className="w-7 h-7 text-primary" />

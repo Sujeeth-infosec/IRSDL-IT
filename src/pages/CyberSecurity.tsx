@@ -11,6 +11,7 @@ const services = [
     subtitle: "Vulnerability Assessment & Penetration Testing",
     description: "Comprehensive security testing to identify and exploit vulnerabilities in your systems before attackers do.",
     icon: Shield,
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=400&fit=crop",
     features: [
       "Network vulnerability scanning",
       "Application penetration testing",
@@ -33,6 +34,7 @@ const services = [
     subtitle: "Security-focused Code Analysis",
     description: "In-depth analysis of your codebase to identify security vulnerabilities, weak patterns, and best practice violations.",
     icon: Code,
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
     features: [
       "Source code security analysis",
       "OWASP vulnerability detection",
@@ -55,6 +57,7 @@ const services = [
     subtitle: "Secure Your Cloud Infrastructure",
     description: "Protect your cloud resources with comprehensive security assessments and hardening strategies.",
     icon: Cloud,
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
     features: [
       "Cloud infrastructure assessment (AWS, Azure, GCP)",
       "IAM and access control review",
@@ -77,6 +80,7 @@ const services = [
     subtitle: "Security Integrated into DevOps",
     description: "Embed security practices throughout your development and deployment pipeline for continuous protection.",
     icon: Lock,
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
     features: [
       "CI/CD pipeline security",
       "Infrastructure as code security",
@@ -99,6 +103,7 @@ const services = [
     subtitle: "Meet Regulatory Requirements",
     description: "Ensure your organization meets industry standards and regulatory requirements with comprehensive compliance audits.",
     icon: CheckCircle,
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop",
     features: [
       "GDPR compliance assessment",
       "ISO 27001 compliance review",
@@ -121,6 +126,7 @@ const services = [
     subtitle: "Identify Potential Threats",
     description: "Proactively identify and analyze potential threats to your systems before they become security incidents.",
     icon: AlertCircle,
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop",
     features: [
       "Threat identification and analysis",
       "Attack surface mapping",
@@ -143,6 +149,7 @@ const services = [
     subtitle: "Rapid Response to Security Incidents",
     description: "Expert response to security incidents with minimal downtime and maximum damage control.",
     icon: Zap,
+    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=400&fit=crop",
     features: [
       "24/7 incident response team",
       "Rapid containment and isolation",
@@ -165,6 +172,7 @@ const services = [
     subtitle: "Educate Your Team on Security",
     description: "Empower your team with security knowledge and best practices to become your first line of defense.",
     icon: BookOpen,
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=400&fit=crop",
     features: [
       "Security awareness training",
       "Secure coding workshops",
@@ -237,73 +245,6 @@ export default function CyberSecurity() {
           />
 
           <ExpandableServiceCards services={services} />
-        </div>
-      </section>
-
-      {/* Detailed Service Sections */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <SectionHeading
-            badge="Deep Dive"
-            title="Service Details"
-            description="Explore each service in detail"
-          />
-
-          <div className="space-y-16">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <div key={service.id} className="grid lg:grid-cols-2 gap-12 items-center">
-                  <div>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-                        <Icon className="w-8 h-8 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-display text-3xl font-bold text-foreground">{service.title}</h3>
-                        <p className="text-primary font-medium">{service.subtitle}</p>
-                      </div>
-                    </div>
-
-                    <p className="text-lg text-muted-foreground mb-8">{service.description}</p>
-
-                    <div className="space-y-6">
-                      <div>
-                        <h4 className="font-display font-semibold text-foreground mb-4">Features & Capabilities</h4>
-                        <ul className="space-y-3">
-                          {service.features.map((feature) => (
-                            <li key={feature} className="flex items-start gap-3">
-                              <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                              <span className="text-muted-foreground">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <h4 className="font-display font-semibold text-foreground mb-4">Benefits</h4>
-                        <ul className="space-y-3">
-                          {service.benefits.map((benefit) => (
-                            <li key={benefit} className="flex items-start gap-3">
-                              <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                              <span className="text-muted-foreground">{benefit}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 p-8 h-96 flex items-center justify-center">
-                    <div className="text-center">
-                      <Icon className="w-24 h-24 text-primary/40 mx-auto mb-4" />
-                      <p className="text-muted-foreground">{service.title} Visualization</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </section>
 

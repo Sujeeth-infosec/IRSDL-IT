@@ -17,10 +17,11 @@ export function MobileNav({ onClose }: MobileNavProps) {
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-border">
         <Link to="/" onClick={onClose} className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold">N</span>
-          </div>
-          <span className="font-display font-bold text-lg text-foreground">NexaTech</span>
+          <img 
+            src="/IRSDL LOGO-01.png" 
+            alt="IRSDL Logo" 
+            className="h-12 w-auto"
+          />
         </Link>
         <Button variant="ghost" size="icon" onClick={onClose}>
           <X className="w-5 h-5" />
